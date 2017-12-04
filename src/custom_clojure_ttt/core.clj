@@ -3,6 +3,6 @@
   (:gen-class))
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "Custom Tic Tac Toe program."
   [& args]
   (console_ui/play-game))
