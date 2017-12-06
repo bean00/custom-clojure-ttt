@@ -3,7 +3,14 @@
             [custom-clojure-ttt.console_ui.console_ui_game_mode :as ui_game_mode]
             [custom-clojure-ttt.console_ui.console_ui_human_move :as ui_human_move]
             [custom-clojure-ttt.console_ui.input_output :as io]
-            [clojure-tic-tac-toe.game_handler :as game_handler]))
+            [clojure-tic-tac-toe.game_handler :as game_handler]
+            [clojure-tic-tac-toe.valid_move_handler :as move_handler]))
+
+(defn set-valid-moves
+  [side-length]
+  ; set valid moves in valid_move_handler.clj
+  (move_handler/)
+  )
 
 (defn- display-initial-output []
   (io/display-introduction)
@@ -25,7 +32,8 @@
     (io/display-board game_handler/empty-board)
     internal-game-mode))
 
-(defn set-up-game []
+(defn set-up-game [] ; (defn set-up-game [& args]
+  ; (set-valid-moves (flatten args))
   (display-initial-output)
   (perform-setup))
 

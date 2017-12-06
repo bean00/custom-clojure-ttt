@@ -20,7 +20,7 @@
 
 (defn play-game [& args]
   (println "-> DEBUG: Argument(s): " (flatten args))
-  (let [game-mode (ui_game_setup/set-up-game)
+  (let [game-mode (ui_game_setup/set-up-game) ; ../set-up-game (flatten args))
         move-strategies (ui_game_setup/decide-strategies game-mode)
         starting-game-state (game_handler/create-game-state move-strategies)
         final-game-state (play-all-rounds starting-game-state)
