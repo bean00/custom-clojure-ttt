@@ -1,5 +1,5 @@
 (ns custom-clojure-ttt.core
-  (:require [clojure-tic-tac-toe.console_ui.console_ui :as console_ui])
+  (:require [custom-clojure-ttt.console_ui.console_ui :as console_ui])
   (:gen-class))
 
 (defn -main
