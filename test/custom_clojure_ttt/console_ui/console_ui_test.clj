@@ -32,5 +32,13 @@
                (with-in-str "h\n1\n4\n2\n5\n3\n"
                  (play-game)))
              "won"))
-        "it displays that the player won")))
+        "it displays that the player won"))
+  (testing "when passing in the side length" ; TODO: remove or edit later
+    (is (= true                              ; - Might not need this test
+           (str/includes?
+             (with-out-str
+               (with-in-str "h\n1\n4\n2\n5\n3\n"
+                 (play-game 3)))
+             "Argument"))
+        "it displays the arguments passed in")))
 

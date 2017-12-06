@@ -5,4 +5,5 @@
 (defn -main
   "Custom Tic Tac Toe program."
   [& args]
-  (console_ui/play-game))
+  (console_ui/play-game args))
+

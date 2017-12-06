@@ -18,7 +18,8 @@
       updated-game-state
       (recur (play-round updated-game-state)))))
 
-(defn play-game []
+(defn play-game [& args]
+  (println "-> DEBUG: Argument(s): " (flatten args))
   (let [game-mode (ui_game_setup/set-up-game)
         move-strategies (ui_game_setup/decide-strategies game-mode)
         starting-game-state (game_handler/create-game-state move-strategies)
