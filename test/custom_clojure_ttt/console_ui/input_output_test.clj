@@ -74,7 +74,7 @@
 
 (deftest display-game-instructions-test
   (testing "when the player has seen the introduction"
-    (is (= (join-lines ["\nTo enter a move, type a number from 1-9."
+    (is (= (join-lines ["\nTo enter a move, type a number."
                         "It will be added to the board based on"
                         "the following positions:\n\n"])
            (with-out-str

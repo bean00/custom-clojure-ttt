@@ -7,7 +7,7 @@
   [number]
   (keyword (str number)))
 
-(defn get-side-length
+(defn- get-side-length
   [args]
   (if (not (empty? args))
     (int-to-keyword (first args))
@@ -29,15 +29,13 @@
       (recur (play-round updated-game-state)))))
 
 (defn play-game [& args]
-  (println "-> DEBUG: Argument(s): " (flatten args))
-  (let [; side-length (get-side-length (flatten args))
-        ; game-mode (ui_game_setup/perform-initial-setup)
-        game-mode (ui_game_setup/set-up-game) ; remove this line
-        ; valid-moves (ui_game_setup/get-valid-moves side-length)
+  (let [side-length (get-side-length (flatten args))
+        game-mode (ui_game_setup/perform-initial-setup)
+        valid-moves (ui_game_setup/get-valid-moves side-length)
         move-strategies (ui_game_setup/decide-strategies game-mode)
-        starting-game-state (game_handler/create-game-state :1 move-strategies)
-          ; (change :1 to 'valid-moves')
-        ; (ui_game_setup/display-instructions starting-game-state)
+        starting-game-state (game_handler/create-game-state
+                              valid-moves move-strategies)
+        _ (ui_game_setup/display-instructions)
         final-game-state (play-all-rounds starting-game-state)
         winner (game_handler/get-winner final-game-state)]
    (io/display-game-over-message winner)))
