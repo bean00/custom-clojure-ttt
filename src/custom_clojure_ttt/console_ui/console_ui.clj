@@ -24,12 +24,14 @@
 
 (defn play-game [& args]
   (println "-> DEBUG: Argument(s): " (flatten args))
-  (let [; game-mode (ui_game_setup/perform-initial-setup)
+  (let [; side-length (get-side-length (flatten args))
+        ; game-mode (ui_game_setup/perform-initial-setup)
         game-mode (ui_game_setup/set-up-game) ; remove this line
-        ; valid-moves (ui_game_setup/get-valid-moves)
-        ; (ui_game_setup/display-instructions)
+        ; valid-moves (ui_game_setup/get-valid-moves side-length)
         move-strategies (ui_game_setup/decide-strategies game-mode)
         starting-game-state (game_handler/create-game-state move-strategies)
+          ; (also pass in 'valid-moves')
+        ; (ui_game_setup/display-instructions starting-game-state)
         final-game-state (play-all-rounds starting-game-state)
         winner (game_handler/get-winner final-game-state)]
    (io/display-game-over-message winner)))

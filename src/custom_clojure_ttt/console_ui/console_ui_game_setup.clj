@@ -28,11 +28,16 @@
   (move_handler/get-valid-moves side-length))
 
 
-(defn- display-initial-output []
+(defn display-instructions []
+  (io/display-game-instructions)
+  (io/display-board game_handler/empty-board))
+
+
+(defn- display-initial-output [] ; remove later
   (io/display-introduction)
   (io/display-game-mode-instructions))
 
-(defn- perform-setup []
+(defn- perform-setup [] ; remove later
   (let [user-game-mode (ui_game_mode/get-valid-game-mode)
         internal-game-mode (convert-game-mode user-game-mode)]
     (io/display-result-of-game-mode-choice internal-game-mode)
@@ -40,8 +45,7 @@
     (io/display-board game_handler/empty-board)
     internal-game-mode))
 
-(defn set-up-game [] ; (defn set-up-game [& args]
-  ; (set-valid-moves (flatten args))
+(defn set-up-game [] ; remove later
   (display-initial-output)
   (perform-setup))
 

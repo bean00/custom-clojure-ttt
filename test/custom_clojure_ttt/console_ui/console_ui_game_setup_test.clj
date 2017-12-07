@@ -39,6 +39,21 @@
            (get-valid-moves :3))
         "it returns the valid moves")))
 
+(deftest display-instructions-test
+  (testing "when the game is set up"
+    (is (= true
+           (str/includes?
+             (with-out-str
+               (display-instructions))
+             "type a number"))
+        "it displays the instructions")
+    (is (= true
+           (str/includes?
+             (with-out-str
+               (display-instructions))
+             " 4 | 5 | 6 "))
+        "it displays the example board")))
+
 (defn- set-up-game-output []
   (with-out-str
     (with-in-str "h\n"
