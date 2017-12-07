@@ -5,9 +5,9 @@
 
 (deftest get-side-length-test
   (testing "when the args passed in contain the side length"
-    (is (= 3
+    (is (= :3
            (get-side-length '(3)))
-        "it returns the side length"))
+        "it returns the side length as a keyword"))
   (testing "when the args list is empty"
     (is (= nil
            (get-side-length '()))

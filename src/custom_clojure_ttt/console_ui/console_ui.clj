@@ -3,9 +3,15 @@
             [custom-clojure-ttt.console_ui.input_output :as io]
             [clojure-tic-tac-toe.game_handler :as game_handler]))
 
+(defn- int-to-keyword
+  [number]
+  (keyword (str number)))
+
 (defn get-side-length
   [args]
-  (first args))
+  (if (not (empty? args))
+    (int-to-keyword (first args))
+    nil))
 
 (defn- play-round
   [game-state]
@@ -29,8 +35,8 @@
         game-mode (ui_game_setup/set-up-game) ; remove this line
         ; valid-moves (ui_game_setup/get-valid-moves side-length)
         move-strategies (ui_game_setup/decide-strategies game-mode)
-        starting-game-state (game_handler/create-game-state move-strategies)
-          ; (also pass in 'valid-moves')
+        starting-game-state (game_handler/create-game-state :1 move-strategies)
+          ; (change :1 to 'valid-moves')
         ; (ui_game_setup/display-instructions starting-game-state)
         final-game-state (play-all-rounds starting-game-state)
         winner (game_handler/get-winner final-game-state)]
