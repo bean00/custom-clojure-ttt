@@ -6,14 +6,6 @@
             [clojure-tic-tac-toe.game_handler :as game_handler]
             [custom-clojure-ttt.valid_move_handler :as move_handler]))
 
-(defn get-valid-moves
-  [side-length]
-  (move_handler/get-valid-moves side-length))
-
-(defn- display-initial-output []
-  (io/display-introduction)
-  (io/display-game-mode-instructions))
-
 (def game-mode-mapping
   { :h :human,
     :c :computer })
@@ -21,6 +13,24 @@
 (defn- convert-game-mode
   [user-game-mode]
   (user-game-mode game-mode-mapping))
+
+(defn perform-initial-setup []
+  (io/display-introduction)
+  (io/display-game-mode-instructions)
+  (let [user-game-mode (ui_game_mode/get-valid-game-mode)
+        internal-game-mode (convert-game-mode user-game-mode)]
+    (io/display-result-of-game-mode-choice internal-game-mode)
+    internal-game-mode))
+
+
+(defn get-valid-moves
+  [side-length]
+  (move_handler/get-valid-moves side-length))
+
+
+(defn- display-initial-output []
+  (io/display-introduction)
+  (io/display-game-mode-instructions))
 
 (defn- perform-setup []
   (let [user-game-mode (ui_game_mode/get-valid-game-mode)

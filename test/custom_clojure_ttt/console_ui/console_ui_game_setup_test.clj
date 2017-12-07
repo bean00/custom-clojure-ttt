@@ -5,6 +5,34 @@
             [custom-clojure-ttt.console_ui.console_ui_human_move :as ui_human_move]
             [custom-clojure-ttt.console_ui.console_ui_game_setup :refer :all]))
 
+(defn- perform-initial-setup-output []
+  (with-out-str
+    (with-in-str "h\n"
+      (perform-initial-setup))))
+
+(deftest perform-initial-setup-test
+  (testing "when the player chooses to play another person"
+    (is (= true
+           (str/includes?
+             (perform-initial-setup-output)
+             "Tic Tac Toe"))
+        "it displays the introduction")
+    (is (= true
+           (str/includes?
+             (perform-initial-setup-output)
+             "\"h\" to play"))
+        "it displays the game mode instructions")
+    (is (= true
+           (str/includes?
+             (perform-initial-setup-output)
+             "chose to play another person"))
+        "it displays the 'playing person' message")
+    (with-out-str
+      (is (= :human
+             (with-in-str "h\n"
+               (perform-initial-setup)))
+          "it returns the internal keyword for playing a person"))))
+
 (deftest get-valid-moves-test
   (testing "when a side length is passed in"
     (is (= #{:1 :2 :3 :4 :5 :6 :7 :8 :9}
