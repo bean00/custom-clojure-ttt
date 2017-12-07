@@ -11,7 +11,7 @@
   [args]
   (if (not (empty? args))
     (int-to-keyword (first args))
-    nil))
+    :default-size))
 
 (defn- play-round
   [game-state]
@@ -33,8 +33,8 @@
         game-mode (ui_game_setup/perform-initial-setup)
         valid-moves (ui_game_setup/get-valid-moves side-length)
         move-strategies (ui_game_setup/decide-strategies game-mode)
-        starting-game-state (game_handler/create-game-state
-                              valid-moves move-strategies)
+        starting-game-state (game_handler/create-game-state ; pass in board,
+                              valid-moves move-strategies)  ; player, and winner
         _ (ui_game_setup/display-instructions)
         final-game-state (play-all-rounds starting-game-state)
         winner (game_handler/get-winner final-game-state)]

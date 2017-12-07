@@ -7,8 +7,8 @@
     (is (= #{:1 :2 :3 :4 :5 :6 :7 :8 :9}
            (get-valid-moves :3))
         "it returns the valid moves"))
-  (testing "when nil is passed in"
+  (testing "when choosing the default size"
     (is (= #{:1 :2 :3 :4 :5 :6 :7 :8 :9}
-           (get-valid-moves nil))
+           (get-valid-moves :default-size))
         "it returns the moves for a 3x3 board")))
 
