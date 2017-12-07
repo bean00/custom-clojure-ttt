@@ -5,6 +5,12 @@
             [custom-clojure-ttt.console_ui.console_ui_human_move :as ui_human_move]
             [custom-clojure-ttt.console_ui.console_ui_game_setup :refer :all]))
 
+(deftest get-valid-moves-test
+  (testing "when a side length is passed in"
+    (is (= #{:1 :2 :3 :4 :5 :6 :7 :8 :9}
+           (get-valid-moves :3))
+        "it returns the valid moves")))
+
 (defn- set-up-game-output []
   (with-out-str
     (with-in-str "h\n"

@@ -4,13 +4,11 @@
             [custom-clojure-ttt.console_ui.console_ui_human_move :as ui_human_move]
             [custom-clojure-ttt.console_ui.input_output :as io]
             [clojure-tic-tac-toe.game_handler :as game_handler]
-            [clojure-tic-tac-toe.valid_move_handler :as move_handler]))
+            [custom-clojure-ttt.valid_move_handler :as move_handler]))
 
-(defn set-valid-moves
+(defn get-valid-moves
   [side-length]
-  ; set valid moves in valid_move_handler.clj
-  (move_handler/)
-  )
+  (move_handler/get-valid-moves side-length))
 
 (defn- display-initial-output []
   (io/display-introduction)
