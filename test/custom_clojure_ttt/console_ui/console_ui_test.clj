@@ -3,6 +3,16 @@
             [clojure.test :refer [deftest testing is]]
             [custom-clojure-ttt.console_ui.console_ui :refer :all]))
 
+(deftest get-side-length-test
+  (testing "when the args passed in contain the side length"
+    (is (= 3
+           (get-side-length '(3)))
+        "it returns the side length"))
+  (testing "when the args list is empty"
+    (is (= nil
+           (get-side-length '()))
+        "it returns nil")))
+
 (defn- play-game-output []
   (with-out-str
     (with-in-str "h\n1\n2\n5\n9\n6\n4\n3\n7\n8\n"

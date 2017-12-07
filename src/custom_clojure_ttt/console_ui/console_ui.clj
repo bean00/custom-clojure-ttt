@@ -3,6 +3,10 @@
             [custom-clojure-ttt.console_ui.input_output :as io]
             [clojure-tic-tac-toe.game_handler :as game_handler]))
 
+(defn get-side-length
+  [args]
+  (first args))
+
 (defn- play-round
   [game-state]
   (let [get-move (game_handler/get-move-strategy game-state)
@@ -22,6 +26,7 @@
   (println "-> DEBUG: Argument(s): " (flatten args))
   (let [; game-mode (ui_game_setup/get-game-mode
         game-mode (ui_game_setup/set-up-game) ; remove this line
+        ; (ui_game_setup/display-instructions)
         move-strategies (ui_game_setup/decide-strategies game-mode)
         ; valid-moves (ui_game_setup/get-valid-moves
         starting-game-state (game_handler/create-game-state move-strategies)
