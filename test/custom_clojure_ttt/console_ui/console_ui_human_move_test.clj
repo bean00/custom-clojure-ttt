@@ -4,8 +4,11 @@
             [clojure-tic-tac-toe.board :as board]
             [custom-clojure-ttt.console_ui.console_ui_human_move :refer :all]))
 
+(def valid-moves
+  #{:1 :2 :3 :4 :5 :6 :7 :8 :9})
+
 (def x-on-empty-game-state
-  {:board board/empty-board, :player :X})
+  {:board board/empty-board, :player :X, :moves valid-moves})
 
 (deftest get-human-move-test
   (testing "when initially getting the move from the player"
@@ -37,7 +40,8 @@
            (str/includes?
              (with-out-str
                (with-in-str "3\n1"
-                 (get-human-move {:board {:X #{:3}, :O #{}}, :player :O})))
+                 (get-human-move {:board {:X #{:3}, :O #{}}, :player :O,
+                                  :moves valid-moves})))
              "already taken"))
         "it displays the correct error message")))
 

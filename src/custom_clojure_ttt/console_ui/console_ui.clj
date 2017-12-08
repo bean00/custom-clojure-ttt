@@ -9,9 +9,10 @@
 
 (defn- get-side-length
   [args]
-  (if (not (empty? args))
-    (int-to-keyword (first args))
-    :default-size))
+  (let [length (first args)]
+    (if-not (nil? length)
+      (int-to-keyword length)
+      :default-size)))
 
 (defn- play-round
   [game-state]
@@ -33,8 +34,9 @@
         game-mode (ui_game_setup/perform-initial-setup)
         valid-moves (ui_game_setup/get-valid-moves side-length)
         move-strategies (ui_game_setup/decide-strategies game-mode)
-        starting-game-state (game_handler/create-game-state ; pass in board,
-                              valid-moves move-strategies)  ; player, and winner
+        starting-game-state (game_handler/create-game-state
+                              game_handler/empty-board :X false false
+                              valid-moves move-strategies)
         _ (ui_game_setup/display-instructions)
         final-game-state (play-all-rounds starting-game-state)
         winner (game_handler/get-winner final-game-state)]

@@ -7,7 +7,7 @@
   (let [player (game_handler/get-player game-state)]
     (loop [move (io/get-move player)]
       (cond
-        (game_handler/is-move-invalid? move)
+        (game_handler/is-move-invalid? game-state move)
           (recur (io/get-move-if-move-is-invalid move player))
         (game_handler/has-move-been-taken? game-state move)
           (recur (io/get-move-if-move-was-taken move player))

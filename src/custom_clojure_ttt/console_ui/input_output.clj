@@ -1,7 +1,7 @@
 (ns custom-clojure-ttt.console_ui.input_output
   (:require [clojure.string :as str]
             [clojure-tic-tac-toe.utilities :refer [join-lines]]
-            [clojure-tic-tac-toe.view :as view]))
+            [custom-clojure-ttt.view :as view]))
 
 (defn display-introduction []
   (println "This is a Tic Tac Toe program.\n"))

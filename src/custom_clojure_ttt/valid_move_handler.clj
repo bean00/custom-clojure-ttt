@@ -7,7 +7,7 @@
 
 (defn get-valid-moves
   [side-length]
-  (if (not= side-length :default-size)
+  (if-not (= side-length :default-size)
     (side-length valid-moves)
     (:3 valid-moves)))
 
