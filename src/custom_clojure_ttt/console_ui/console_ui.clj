@@ -14,6 +14,17 @@
       (int-to-keyword length)
       :default-size)))
 
+(defn- create-starting-game-state
+  [args]
+  (let [side-length (get-side-length (flatten args))
+        game-mode (ui_game_setup/perform-setup)
+        valid-moves (ui_game_setup/get-valid-moves side-length)
+        move-strategies (ui_game_setup/decide-strategies game-mode)
+        starting-game-state (game_handler/create-game-state
+                              game_handler/empty-board :X false false
+                              valid-moves move-strategies)]
+    starting-game-state))
+
 (defn- play-round
   [game-state]
   (let [get-move (game_handler/get-move-strategy game-state)
@@ -30,13 +41,7 @@
       (recur (play-round updated-game-state)))))
 
 (defn play-game [& args]
-  (let [side-length (get-side-length (flatten args))
-        game-mode (ui_game_setup/perform-setup)
-        valid-moves (ui_game_setup/get-valid-moves side-length)
-        move-strategies (ui_game_setup/decide-strategies game-mode)
-        starting-game-state (game_handler/create-game-state
-                              game_handler/empty-board :X false false
-                              valid-moves move-strategies)
+  (let [starting-game-state (create-starting-game-state (flatten args))
         _ (ui_game_setup/display-instructions)
         final-game-state (play-all-rounds starting-game-state)
         winner (game_handler/get-winner final-game-state)]
