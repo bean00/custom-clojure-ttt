@@ -1,6 +1,6 @@
 # Custom Tic Tac Toe in Clojure
 
-A program to play Tic Tac Toe, that depends on another project (https://github.com/bean00/Clojure-Tic-Tac-Toe). This is a customized version (Ex: playing with different board sizes).
+A program to play Tic Tac Toe, that depends on another project (https://github.com/bean00/Clojure-Tic-Tac-Toe). This is a customized version (Ex: playing with different board sizes). Has an option to play against a computer.
 
 ## Instructions
 1. Clone or download this repository onto your local machine
