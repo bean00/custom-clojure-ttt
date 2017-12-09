@@ -31,7 +31,7 @@
 
 (defn play-game [& args]
   (let [side-length (get-side-length (flatten args))
-        game-mode (ui_game_setup/perform-initial-setup)
+        game-mode (ui_game_setup/perform-setup)
         valid-moves (ui_game_setup/get-valid-moves side-length)
         move-strategies (ui_game_setup/decide-strategies game-mode)
         starting-game-state (game_handler/create-game-state
