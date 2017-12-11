@@ -4,7 +4,8 @@
             [custom-clojure-ttt.console_ui.console_ui_human_move :as ui_human_move]
             [custom-clojure-ttt.console_ui.input_output :as io]
             [clojure-tic-tac-toe.game_handler :as game_handler]
-            [custom-clojure-ttt.valid_move_handler :as move_handler]))
+            [custom-clojure-ttt.valid_move_handler :as valid_move_handler]
+            [custom-clojure-ttt.winning_move_handler :as winning_move_handler]))
 
 (def game-mode-mapping
   { :h :human,
@@ -25,7 +26,11 @@
 
 (defn get-valid-moves
   [side-length]
-  (move_handler/get-valid-moves side-length))
+  (valid_move_handler/get-valid-moves side-length))
+
+
+(defn get-winning-moves []
+  (winning_move_handler/get-winning-moves))
 
 
 (defn display-instructions []

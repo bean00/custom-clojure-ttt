@@ -1,4 +1,4 @@
-(ns clojure-tic-tac-toe.tic_tac_toe_rules)
+(ns custom-clojure-ttt.winning_move_handler)
 
 (def winning-rows
   (list #{:1 :2 :3}
@@ -14,6 +14,9 @@
   (list #{:1 :5 :9}
         #{:3 :5 :7}))
 
-(def winning-sets
+(def winning-moves
   (concat winning-rows winning-columns winning-diagonals))
+
+(defn get-winning-moves []
+  winning-moves)
 
