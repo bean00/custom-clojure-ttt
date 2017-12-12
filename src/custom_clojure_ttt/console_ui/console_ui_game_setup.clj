@@ -16,8 +16,7 @@
   [user-game-mode]
   (user-game-mode game-mode-mapping))
 
-(defn perform-setup []
-  (io/display-introduction)
+(defn get-game-mode []
   (io/display-game-mode-instructions)
   (let [user-game-mode (ui_game_mode/get-valid-game-mode)
         internal-game-mode (convert-game-mode user-game-mode)]

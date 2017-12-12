@@ -15,8 +15,9 @@
       :default-size)))
 
 (defn- create-initial-data
-  [side-length] ; pass in game-mode
-  (let [game-mode (ui_game_setup/perform-setup) ; get game-mode somewhere else
+  [side-length]
+  (let [_ (io/display-introduction)
+        game-mode (ui_game_setup/get-game-mode)
         valid-moves (ui_game_setup/get-valid-moves side-length)
         winning-moves (ui_game_setup/get-winning-moves side-length)
         move-strategies (ui_game_setup/decide-strategies game-mode)
