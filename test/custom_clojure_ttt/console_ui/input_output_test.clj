@@ -1,9 +1,9 @@
 (ns custom-clojure-ttt.console_ui.input_output_test
   (:require [clojure.string :as str]
             [clojure.test :refer [deftest testing is]]
-            [clojure-tic-tac-toe.board :as board]
             [clojure-tic-tac-toe.utilities :refer [join-lines]]
-            [custom-clojure-ttt.console_ui.input_output :refer :all]))
+            [custom-clojure-ttt.console_ui.input_output :refer :all]
+            [custom-clojure-ttt.view_handler :as view_handler]))
 
 (deftest display-introduction-test
   (testing "when the player starts the program"
@@ -147,7 +147,8 @@
                             ""])]
       (is (= view
              (with-out-str
-               (display-board {:board {:X #{:1 :3}, :O #{:5}}})))
+               (display-board {:board {:X #{:1 :3}, :O #{:5}}}
+                              view_handler/create-view)))
           "it displays the board correctly"))))
 
 (deftest display-game-over-message-test

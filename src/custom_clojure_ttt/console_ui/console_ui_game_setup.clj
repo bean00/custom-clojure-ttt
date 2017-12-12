@@ -5,6 +5,7 @@
             [custom-clojure-ttt.console_ui.input_output :as io]
             [clojure-tic-tac-toe.game_handler :as game_handler]
             [custom-clojure-ttt.valid_move_handler :as valid_move_handler]
+            [custom-clojure-ttt.view_handler :as view_handler]
             [custom-clojure-ttt.winning_move_handler :as winning_move_handler]))
 
 (def game-mode-mapping
@@ -34,9 +35,14 @@
   (winning_move_handler/get-winning-moves side-length))
 
 
-(defn display-instructions []
+(defn get-create-view-function []
+  view_handler/create-view)
+
+
+(defn display-instructions
+  [create-view]
   (io/display-game-instructions)
-  (io/display-board game_handler/empty-board))
+  (io/display-board game_handler/empty-board create-view))
 
 
 (defn decide-strategies

@@ -95,8 +95,8 @@
 
 
 (defn display-board
-  [game-state]
-  (println (view/create-view game-state)))
+  [game-state create-view]
+  (println (create-view game-state)))
 
 
 (defn display-game-over-message
