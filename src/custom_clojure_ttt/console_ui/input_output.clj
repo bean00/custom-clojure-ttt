@@ -39,17 +39,25 @@
   (get-input))
 
 
-(defn- display-playing-person-message []
-  (println "\nOk, you chose to play another person."))
+(defn display-move-order-instructions []
+  (println (join-lines ["\nPlease choose the move order:"
+                        "- \"1\" to go first"
+                        "- \"2\" to go second\n"])))
 
-(defn- display-playing-computer-message []
-  (println "\nOk, you chose to play a computer."))
 
-(defn display-result-of-game-mode-choice
-  [game-mode]
-  (cond
-    (= game-mode :human) (display-playing-person-message)
-    (= game-mode :computer) (display-playing-computer-message)))
+(defn- display-invalid-move-order-message
+  [order]
+  (printf "\n<!> Error: Move order \"%s\" is invalid.", (name order))
+  (printf " Must be 1 or 2."))
+
+(defn- prompt-player-for-move-order []
+  (printf "\nPlease enter the move order: "))
+
+(defn get-move-order
+  [order]
+  (display-invalid-move-order-message order)
+  (prompt-player-for-move-order)
+  (get-input))
 
 
 (defn display-game-instructions []
