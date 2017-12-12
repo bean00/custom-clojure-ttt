@@ -21,7 +21,7 @@
         winning-moves (ui_game_setup/get-winning-moves side-length)
         move-strategies (ui_game_setup/decide-strategies game-mode)
         starting-game-state (game_handler/create-game-state
-                              game_handler/empty-board :X false false
+                              game_handler/empty-board :X false
                               valid-moves winning-moves move-strategies)]
     starting-game-state))
 
