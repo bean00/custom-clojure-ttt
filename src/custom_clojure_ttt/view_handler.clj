@@ -1,4 +1,4 @@
-(ns custom-clojure-ttt.view
+(ns custom-clojure-ttt.view_handler
   (:require [clojure-tic-tac-toe.game_handler :as game_handler]
             [clojure-tic-tac-toe.utilities :refer [join-lines]]))
 
