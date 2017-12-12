@@ -3,7 +3,7 @@
             [custom-clojure-ttt.console_ui.input_output :as io]))
 
 (defn have-computer-move
-  [game-state]
+  [game-state initial-data]
   (io/display-computer-move-message)
-  (computer_move/make-minimax-move game-state))
+  (computer_move/make-minimax-move game-state initial-data))
 
