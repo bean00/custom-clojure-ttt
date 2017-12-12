@@ -15,10 +15,8 @@
       :default-size)))
 
 (defn- create-initial-data
-  [side-length]
-  (let [_ (io/display-introduction)
-        game-mode (ui_game_setup/get-game-mode)
-        valid-moves (ui_game_setup/get-valid-moves side-length)
+  [side-length game-mode]
+  (let [valid-moves (ui_game_setup/get-valid-moves side-length)
         winning-moves (ui_game_setup/get-winning-moves side-length)
         move-strategies (ui_game_setup/decide-strategies game-mode)
         create-view (ui_game_setup/get-create-view)
@@ -46,8 +44,10 @@
       (recur (play-round updated-game-state initial-data)))))
 
 (defn play-game [& args]
-  (let [side-length (get-side-length (flatten args))
-        initial-data (create-initial-data side-length)
+  (let [_ (io/display-introduction)
+        game-mode (ui_game_setup/get-game-mode)
+        side-length (get-side-length (flatten args))
+        initial-data (create-initial-data side-length game-mode)
         starting-game-state (create-starting-game-state)
         create-view (game_handler/get-create-view initial-data)
         _ (ui_game_setup/display-instructions create-view)
