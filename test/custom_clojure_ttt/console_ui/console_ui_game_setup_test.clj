@@ -8,28 +8,20 @@
             [custom-clojure-ttt.view_handler :as view_handler]
             [custom-clojure-ttt.winning_move_handler :as winning_move_handler]))
 
-(defn- perform-setup-output []
-  (with-out-str
-    (with-in-str "h\n"
-      (perform-setup))))
-
-(deftest perform-setup-test
-  (testing "when the player chooses to play another person"
+(deftest get-game-mode-test
+  (testing "when getting the game mode"
     (is (= true
            (str/includes?
-             (perform-setup-output)
-             "Tic Tac Toe"))
-        "it displays the introduction")
-    (is (= true
-           (str/includes?
-             (perform-setup-output)
+             (with-out-str
+               (with-in-str "h\n"
+                 (get-game-mode)))
              "\"h\" to play"))
         "it displays the game mode instructions")
     (with-out-str
       (is (= :human
              (with-in-str "h\n"
-               (perform-setup)))
-          "it returns the internal keyword for playing a person"))))
+               (get-game-mode)))
+          "it returns the game mode"))))
 
 (deftest get-valid-moves-test
   (testing "when a side length is passed in"
