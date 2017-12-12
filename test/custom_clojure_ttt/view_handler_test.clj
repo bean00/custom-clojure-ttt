@@ -24,3 +24,9 @@
              (create-view {:board {:X #{:1 :3}, :O #{:5}}}))
           "it returns the formatted string for the board"))))
 
+(deftest get-create-view-function-test
+  (testing "when getting the create view function"
+    (is (= create-view
+           (get-create-view-function))
+        "it returns the function")))
+

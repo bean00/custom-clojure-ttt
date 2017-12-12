@@ -22,3 +22,6 @@
                "---+---+---"
                (create-row game-state :7 :8 :9)]))
 
+(defn get-create-view-function []
+  create-view)
+
