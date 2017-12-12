@@ -13,7 +13,7 @@
     (is (= true
            (str/includes?
              (play-game-output)
-             "chose to play another person"))
+             "Tic Tac Toe"))
         "it sets up the game")
     (is (= true
            (str/includes?

@@ -15,8 +15,8 @@
       :default-size)))
 
 (defn- create-initial-data
-  [side-length]
-  (let [game-mode (ui_game_setup/perform-setup)
+  [side-length] ; pass in game-mode
+  (let [game-mode (ui_game_setup/perform-setup) ; get game-mode somewhere else
         valid-moves (ui_game_setup/get-valid-moves side-length)
         winning-moves (ui_game_setup/get-winning-moves side-length)
         move-strategies (ui_game_setup/decide-strategies game-mode)
@@ -25,7 +25,7 @@
                        valid-moves winning-moves move-strategies create-view)]
     initial-data))
 
-(defn- create-starting-game-state []
+(defn- create-starting-game-state [] ; pass in player, and use instead of :X
   (game_handler/create-game-state game_handler/empty-board :X false))
 
 (defn- play-round

@@ -25,11 +25,6 @@
              (perform-setup-output)
              "\"h\" to play"))
         "it displays the game mode instructions")
-    (is (= true
-           (str/includes?
-             (perform-setup-output)
-             "chose to play another person"))
-        "it displays the 'playing person' message")
     (with-out-str
       (is (= :human
              (with-in-str "h\n"

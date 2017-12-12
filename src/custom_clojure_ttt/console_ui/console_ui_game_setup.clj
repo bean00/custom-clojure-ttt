@@ -21,7 +21,6 @@
   (io/display-game-mode-instructions)
   (let [user-game-mode (ui_game_mode/get-valid-game-mode)
         internal-game-mode (convert-game-mode user-game-mode)]
-    (io/display-result-of-game-mode-choice internal-game-mode)
     internal-game-mode))
 
 
