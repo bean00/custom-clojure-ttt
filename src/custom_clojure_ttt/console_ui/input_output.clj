@@ -39,19 +39,6 @@
   (get-input))
 
 
-(defn- display-playing-person-message []
-  (println "\nOk, you chose to play another person."))
-
-(defn- display-playing-computer-message []
-  (println "\nOk, you chose to play a computer."))
-
-(defn display-result-of-game-mode-choice
-  [game-mode]
-  (cond
-    (= game-mode :human) (display-playing-person-message)
-    (= game-mode :computer) (display-playing-computer-message)))
-
-
 (defn display-game-instructions []
   (println (join-lines ["\nTo enter a move, type a number."
                         "It will be added to the board based on"

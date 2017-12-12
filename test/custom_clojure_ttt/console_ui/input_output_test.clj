@@ -56,22 +56,6 @@
                (get-game-mode :h)))
           "it returns the input as a keyword"))))
 
-(deftest display-result-of-game-mode-choice-test
-  (testing "when the player chooses to play another person"
-    (is (= true
-           (str/includes?
-             (with-out-str
-               (display-result-of-game-mode-choice :human))
-             "play another person"))
-        "it displays the 'playing person' message"))
-  (testing "when the player chooses to play a computer"
-    (is (= true
-           (str/includes?
-             (with-out-str
-               (display-result-of-game-mode-choice :computer))
-             "play a computer"))
-        "it displays the 'playing computer' message")))
-
 (deftest display-game-instructions-test
   (testing "when the player has seen the introduction"
     (is (= (join-lines ["\nTo enter a move, type a number."
