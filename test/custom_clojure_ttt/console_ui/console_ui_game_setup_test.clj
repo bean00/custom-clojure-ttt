@@ -48,10 +48,10 @@
            (get-winning-moves :3))
         "it returns the winning moves")))
 
-(deftest get-create-view-function-test
+(deftest get-create-view-test
   (testing "when getting the create view function"
     (is (= view_handler/create-view
-           (get-create-view-function))
+           (get-create-view))
         "it returns the function")))
 
 (deftest display-instructions-test

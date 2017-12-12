@@ -26,7 +26,7 @@
     starting-game-state))
 
 (defn- create-initial-data []
-  (let [create-view (ui_game_setup/get-create-view-function)
+  (let [create-view (ui_game_setup/get-create-view)
         initial-data (game_handler/create-initial-data create-view)]
     initial-data))
 

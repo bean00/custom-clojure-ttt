@@ -35,7 +35,7 @@
   (winning_move_handler/get-winning-moves side-length))
 
 
-(defn get-create-view-function []
+(defn get-create-view []
   view_handler/create-view)
 
 
