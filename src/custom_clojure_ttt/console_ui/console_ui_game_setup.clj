@@ -29,8 +29,9 @@
   (valid_move_handler/get-valid-moves side-length))
 
 
-(defn get-winning-moves []
-  (winning_move_handler/get-winning-moves))
+(defn get-winning-moves
+  [side-length]
+  (winning_move_handler/get-winning-moves side-length))
 
 
 (defn display-instructions []

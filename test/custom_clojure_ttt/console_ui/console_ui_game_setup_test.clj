@@ -1,9 +1,17 @@
 (ns custom-clojure-ttt.console_ui.console_ui_game_setup_test
   (:require [clojure.string :as str]
             [clojure.test :refer [deftest testing is]]
+            [clojure-tic-tac-toe.default_valid_moves :as default_valid_moves]
+            [clojure-tic-tac-toe.default_winning_moves :as default_winning_moves]
             [custom-clojure-ttt.console_ui.console_ui_computer_move :as ui_comp_move]
             [custom-clojure-ttt.console_ui.console_ui_human_move :as ui_human_move]
             [custom-clojure-ttt.console_ui.console_ui_game_setup :refer :all]))
+
+(def valid-moves-on-3x3
+  default_valid_moves/valid-moves)
+
+(def winning-moves-on-3x3
+  default_winning_moves/winning-moves)
 
 (defn- perform-setup-output []
   (with-out-str
@@ -35,16 +43,14 @@
 
 (deftest get-valid-moves-test
   (testing "when a side length is passed in"
-    (is (= #{:1 :2 :3 :4 :5 :6 :7 :8 :9}
+    (is (= valid-moves-on-3x3
            (get-valid-moves :3))
         "it returns the valid moves")))
 
 (deftest get-winning-moves-test
   (testing "when the function is called"
-    (is (= '(#{:1 :2 :3} #{:4 :5 :6} #{:7 :8 :9}
-             #{:1 :4 :7} #{:2 :5 :8} #{:3 :6 :9}
-             #{:1 :5 :9} #{:3 :5 :7}) 
-           (get-winning-moves))
+    (is (= winning-moves-on-3x3
+           (get-winning-moves :3))
         "it returns the winning moves")))
 
 (deftest display-instructions-test

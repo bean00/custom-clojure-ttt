@@ -19,7 +19,7 @@
   (let [side-length (get-side-length (flatten args))
         game-mode (ui_game_setup/perform-setup)
         valid-moves (ui_game_setup/get-valid-moves side-length)
-        winning-moves (ui_game_setup/get-winning-moves)
+        winning-moves (ui_game_setup/get-winning-moves side-length)
         move-strategies (ui_game_setup/decide-strategies game-mode)
         starting-game-state (game_handler/create-game-state
                               game_handler/empty-board :X false false
