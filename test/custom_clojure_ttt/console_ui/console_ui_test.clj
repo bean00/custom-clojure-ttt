@@ -40,5 +40,13 @@
                (with-in-str "h\n1\n4\n2\n5\n3\n"
                  (play-game 3)))
              " O | O | 6 "))
-        "it displays the board with the moves made")))
+        "it displays the board with the moves made"))
+  (testing "when playing against a computer"
+    (is (= true
+           (str/includes?
+             (with-out-str
+               (with-in-str "c\n1\n1\n2\n4\n"
+                 (play-game)))
+             "choose the move order"))
+        "it allows the user to go 1st or 2nd")))
 

@@ -14,14 +14,23 @@
       (int-to-keyword length)
       :default-size)))
 
+(defn- get-starting-player
+  [game-mode move-order]
+  (if (and (= game-mode :computer)
+           (= move-order :2))
+    :O
+    :X))
 
 (defn- perform-setup
   [args]
   (let [side-length (get-side-length (flatten args))
         _ (io/display-introduction)
-        game-mode (ui_game_setup/get-game-mode)]
+        game-mode (ui_game_setup/get-game-mode)
+        move-order (ui_game_setup/get-move-order game-mode)
+        starting-player (get-starting-player game-mode move-order)]
     { :side-length side-length
-      :game-mode game-mode }))
+      :game-mode game-mode
+      :starting-player starting-player }))
 
 
 (defn- create-initial-data
@@ -35,8 +44,9 @@
     initial-data))
 
 
-(defn- create-starting-game-state []
-  (game_handler/create-game-state game_handler/empty-board :X false))
+(defn- create-starting-game-state
+  [{:keys [starting-player]}]
+  (game_handler/create-game-state game_handler/empty-board starting-player false))
 
 
 (defn- display-board
@@ -72,7 +82,7 @@
   [& args]
   (let [setup-data (perform-setup args)
         initial-data (create-initial-data setup-data)
-        starting-game-state (create-starting-game-state)
+        starting-game-state (create-starting-game-state setup-data)
         _ (display-instructions initial-data)
         final-game-state (play-all-rounds starting-game-state initial-data)
         _ (display-game-over-message final-game-state initial-data)]))

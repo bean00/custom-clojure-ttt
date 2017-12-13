@@ -24,14 +24,25 @@
           "it returns the game mode"))))
 
 (deftest get-move-order-test
-  (testing "when getting the move order"
+  (testing "when getting the move order, while playing a computer"
     (is (= true
            (str/includes?
              (with-out-str
                (with-in-str "1\n"
-                 (get-move-order)))
+                 (get-move-order :computer)))
              "\"1\" to go first"))
-        "it displays the move order instructions")))
+        "it displays the move order instructions")
+    (with-out-str
+      (is (= :1
+             (with-in-str "1\n"
+               (get-move-order :computer)))
+          "it returns the move order")))
+  (testing "when not playing a computer"
+    (with-out-str
+      (is (= nil
+             (with-in-str "1\n"
+               (get-move-order :human)))
+          "it returns nil"))))
 
 (deftest get-valid-moves-test
   (testing "when a side length is passed in"
@@ -44,6 +55,16 @@
     (is (= winning_move_handler/winning-moves
            (get-winning-moves :3))
         "it returns the winning moves")))
+
+(deftest decide-strategies-test
+  (testing "when the game is Human vs. Human"
+    (is (= {:X ui_human_move/get-human-move, :O ui_human_move/get-human-move}
+           (decide-strategies :human))
+        "it returns the strategies for 2 human players"))
+  (testing "when the game is Human vs. Computer"
+    (is (= {:X ui_human_move/get-human-move, :O ui_comp_move/have-computer-move}
+           (decide-strategies :computer))
+        "it returns strategies for a human and a computer")))
 
 (deftest get-create-view-test
   (testing "when getting the create view function"
@@ -65,14 +86,4 @@
                (display-instructions view_handler/create-view))
              " 4 | 5 | 6 "))
         "it displays the example board")))
-
-(deftest decide-strategies-test
-  (testing "when the game is Human vs. Human"
-    (is (= {:X ui_human_move/get-human-move, :O ui_human_move/get-human-move}
-           (decide-strategies :human))
-        "it returns the strategies for 2 human players"))
-  (testing "when the game is Human vs. Computer"
-    (is (= {:X ui_human_move/get-human-move, :O ui_comp_move/have-computer-move}
-           (decide-strategies :computer))
-        "it returns strategies for a human and a computer")))
 

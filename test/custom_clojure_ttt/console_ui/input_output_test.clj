@@ -58,12 +58,34 @@
 
 (deftest display-move-order-instructions-test
   (testing "when the player has entered in a game mode"
-    (is (= (join-lines ["Please choose the move order:"
+    (is (= (join-lines ["\nPlease choose the move order:"
                         "- \"1\" to go first"
                         "- \"2\" to go second\n\n"])
            (with-out-str
              (display-move-order-instructions)))
         "it displays the instructions for choosing the move order")))
+
+(deftest get-move-order-test
+  (testing "when getting the move order"
+    (is (= true
+           (str/includes?
+             (with-out-str
+               (with-in-str "1\n"
+                 (get-move-order :1)))
+             "is invalid"))
+        "it displays the invalid game mode message")
+    (is (= true
+           (str/includes?
+             (with-out-str
+               (with-in-str "1\n"
+                 (get-move-order :1)))
+             "enter the move order"))
+        "it prompts the player for the move order")
+    (with-out-str
+      (is (= :1
+             (with-in-str "1\n"
+               (get-move-order :1)))
+          "it returns the input as a keyword"))))
 
 (deftest display-game-instructions-test
   (testing "when the player has seen the introduction"

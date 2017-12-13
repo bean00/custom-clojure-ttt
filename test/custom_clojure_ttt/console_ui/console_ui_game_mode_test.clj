@@ -32,3 +32,11 @@
              (count (re-seq #"enter the game mode" output)))
           "it displays the game mode prompt twice"))))
 
+(deftest get-valid-move-order-test
+  (testing "when a valid move order is entered"
+    (with-out-str
+      (is (= :1
+             (with-in-str "1\n"
+               (get-valid-move-order)))
+          "it returns the move order as a keyword"))))
+
