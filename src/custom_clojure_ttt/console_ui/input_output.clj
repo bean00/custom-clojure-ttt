@@ -39,6 +39,12 @@
   (get-input))
 
 
+(defn display-move-order-instructions []
+  (println (join-lines ["Please choose the move order:"
+                        "- \"1\" to go first"
+                        "- \"2\" to go second\n"])))
+
+
 (defn display-game-instructions []
   (println (join-lines ["\nTo enter a move, type a number."
                         "It will be added to the board based on"
