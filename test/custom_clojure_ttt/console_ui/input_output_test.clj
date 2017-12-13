@@ -65,6 +65,28 @@
              (display-move-order-instructions)))
         "it displays the instructions for choosing the move order")))
 
+(deftest get-move-order-test
+  (testing "when getting the move order"
+    (is (= true
+           (str/includes?
+             (with-out-str
+               (with-in-str "1\n"
+                 (get-move-order :1)))
+             "is invalid"))
+        "it displays the invalid move order message")
+    (is (= true
+           (str/includes?
+             (with-out-str
+               (with-in-str "1\n"
+                 (get-move-order :1)))
+             "enter the move order"))
+        "it prompts the player for the move order")
+    (with-out-str
+      (is (= :1
+             (with-in-str "1\n"
+               (get-move-order :1)))
+          "it returns the input as a keyword"))))
+
 (deftest display-game-instructions-test
   (testing "when the player has seen the introduction"
     (is (= (join-lines ["\nTo enter a move, type a number."

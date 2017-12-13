@@ -13,3 +13,6 @@
       (recur (io/get-game-mode mode))
       mode)))
 
+(defn get-valid-move-order []
+  (io/get-initial-input))
+

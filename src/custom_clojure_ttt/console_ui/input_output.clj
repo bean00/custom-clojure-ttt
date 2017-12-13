@@ -45,6 +45,21 @@
                         "- \"2\" to go second\n"])))
 
 
+(defn- display-invalid-move-order-message
+  [order]
+  (printf "\n<!> Error: Move order \"%s\" is invalid.", (name order))
+  (printf " Must be 1 or 2."))
+
+(defn- prompt-player-for-move-order []
+  (printf "\nPlease enter the move order: "))
+
+(defn get-move-order
+  [order]
+  (display-invalid-move-order-message order)
+  (prompt-player-for-move-order)
+  (get-input))
+
+
 (defn display-game-instructions []
   (println (join-lines ["\nTo enter a move, type a number."
                         "It will be added to the board based on"

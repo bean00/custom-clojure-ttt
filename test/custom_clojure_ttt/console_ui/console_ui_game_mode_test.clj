@@ -32,3 +32,33 @@
              (count (re-seq #"enter the game mode" output)))
           "it displays the game mode prompt twice"))))
 
+; TODO: use common loop code, remove this test, and just have a confirmation test
+(deftest get-valid-move-order-test
+  (testing "when initially getting the move order"
+    (is (= true
+           (str/includes?
+             (with-out-str
+               (with-in-str "1\n"
+                 (get-valid-move-order)))
+             ">"))
+        "it displays the angle bracket"))
+  (testing "when a valid move order is entered"
+    (with-out-str
+      (is (= :1
+             (with-in-str "1\n"
+               (get-valid-move-order)))
+          "it returns the move order as a keyword"))))
+  ;(testing "when an invalid order is entered 2 times, followed by a valid order"
+  ;  (let [output (with-out-str
+  ;                 (with-in-str "X\nX\nh\n"
+  ;                   (get-valid-move-order)))]
+  ;    (is (= true
+  ;           (str/includes? output "is invalid"))
+  ;        "it displays the correct error message")))
+  ;    (is (= true
+  ;           (str/includes? output "enter the game mode"))
+  ;        "it displays the game mode prompt")
+  ;    (is (= 2
+  ;           (count (re-seq #"enter the game mode" output)))
+  ;        "it displays the game mode prompt twice"))))
+
