@@ -23,6 +23,12 @@
     internal-game-mode))
 
 
+(defn get-move-order
+  [] ; pass in game-mode
+  ; when (= game-mode :computer)...
+  (io/display-move-order-instructions))
+
+
 (defn get-valid-moves
   [side-length]
   (valid_move_handler/get-valid-moves side-length))

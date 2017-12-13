@@ -23,6 +23,16 @@
                (get-game-mode)))
           "it returns the game mode"))))
 
+(deftest get-move-order-test
+  (testing "when getting the move order"
+    (is (= true
+           (str/includes?
+             (with-out-str
+               (with-in-str "1\n"
+                 (get-move-order)))
+             "\"1\" to go first"))
+        "it displays the move order instructions")))
+
 (deftest get-valid-moves-test
   (testing "when a side length is passed in"
     (is (= default_valid_moves/valid-moves

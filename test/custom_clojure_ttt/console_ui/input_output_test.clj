@@ -56,6 +56,15 @@
                (get-game-mode :h)))
           "it returns the input as a keyword"))))
 
+(deftest display-move-order-instructions-test
+  (testing "when the player has entered in a game mode"
+    (is (= (join-lines ["Please choose the move order:"
+                        "- \"1\" to go first"
+                        "- \"2\" to go second\n\n"])
+           (with-out-str
+             (display-move-order-instructions)))
+        "it displays the instructions for choosing the move order")))
+
 (deftest display-game-instructions-test
   (testing "when the player has seen the introduction"
     (is (= (join-lines ["\nTo enter a move, type a number."
