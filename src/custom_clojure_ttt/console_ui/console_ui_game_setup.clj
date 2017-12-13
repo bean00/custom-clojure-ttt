@@ -1,6 +1,6 @@
 (ns custom-clojure-ttt.console_ui.console_ui_game_setup
   (:require [custom-clojure-ttt.console_ui.console_ui_computer_move :as ui_comp_move]
-            [custom-clojure-ttt.console_ui.console_ui_game_mode :as ui_game_mode]
+            [custom-clojure-ttt.console_ui.console_ui_game_mode :as ui_game_input]
             [custom-clojure-ttt.console_ui.console_ui_human_move :as ui_human_move]
             [custom-clojure-ttt.console_ui.input_output :as io]
             [clojure-tic-tac-toe.game_handler :as game_handler]
@@ -18,24 +18,27 @@
 
 (defn get-game-mode []
   (io/display-game-mode-instructions)
-  (let [user-game-mode (ui_game_mode/get-valid-game-mode)
+  (let [user-game-mode (ui_game_input/get-valid-game-mode)
         internal-game-mode (convert-game-mode user-game-mode)]
     internal-game-mode))
 
 
 (defn get-move-order
-  [] ; pass in game-mode
-  ; when (= game-mode :computer)...
-  (io/display-move-order-instructions))
+  [game-mode]
+  (when (= game-mode :computer)
+    (io/display-move-order-instructions)
+    (ui_game_input/get-valid-move-order)))
 
 
 (defn get-valid-moves
   [side-length]
   (valid_move_handler/get-valid-moves side-length))
 
+
 (defn get-winning-moves
   [side-length]
   (winning_move_handler/get-winning-moves side-length))
+
 
 (defn decide-strategies
   [game-mode]
@@ -45,8 +48,10 @@
     (= game-mode :computer)
        {:X ui_human_move/get-human-move, :O ui_comp_move/have-computer-move}))
 
+
 (defn get-create-view []
   view_handler/create-view)
+
 
 (defn display-instructions
   [create-view]

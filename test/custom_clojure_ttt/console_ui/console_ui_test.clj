@@ -3,17 +3,6 @@
             [clojure.test :refer [deftest testing is]]
             [custom-clojure-ttt.console_ui.console_ui :refer :all]))
 
-; TODO: remove this
-(deftest get-starting-player-test
-  (testing "when playing against a human"
-    (is (= :X
-           (get-starting-player :human :1))
-        "it returns :X"))
-  (testing "when playing against a computer and going second"
-    (is (= :O
-           (get-starting-player :computer :2))
-        "it returns :O")))
-
 (defn- play-game-output []
   (with-out-str
     (with-in-str "h\n1\n2\n5\n9\n6\n4\n3\n7\n8\n"
@@ -51,5 +40,13 @@
                (with-in-str "h\n1\n4\n2\n5\n3\n"
                  (play-game 3)))
              " O | O | 6 "))
-        "it displays the board with the moves made")))
+        "it displays the board with the moves made"))
+  (testing "when playing against a computer"
+    (is (= true
+           (str/includes?
+             (with-out-str
+               (with-in-str "c\n1\n1\n2\n4\n"
+                 (play-game)))
+             "choose the move order"))
+        "it allows the user to go 1st or 2nd")))
 

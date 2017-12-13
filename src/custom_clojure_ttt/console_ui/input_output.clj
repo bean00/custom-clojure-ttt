@@ -40,7 +40,7 @@
 
 
 (defn display-move-order-instructions []
-  (println (join-lines ["Please choose the move order:"
+  (println (join-lines ["\nPlease choose the move order:"
                         "- \"1\" to go first"
                         "- \"2\" to go second\n"])))
 

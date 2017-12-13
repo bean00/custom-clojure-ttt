@@ -58,7 +58,7 @@
 
 (deftest display-move-order-instructions-test
   (testing "when the player has entered in a game mode"
-    (is (= (join-lines ["Please choose the move order:"
+    (is (= (join-lines ["\nPlease choose the move order:"
                         "- \"1\" to go first"
                         "- \"2\" to go second\n\n"])
            (with-out-str

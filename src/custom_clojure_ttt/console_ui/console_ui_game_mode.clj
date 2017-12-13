@@ -3,16 +3,22 @@
 
 (def valid-game-modes #{:h :c})
 
+(def valid-move-orders #{:1 :2})
+
 (defn- is-input-invalid?
   [valid-input-values input]
   (not (contains? valid-input-values input)))
 
+(defn get-valid-game-input
+  [valid-input-values get-game-input]
+  (loop [input (io/get-initial-input)]
+    (if (is-input-invalid? valid-input-values input)
+      (recur (get-game-input input))
+      input)))
+
 (defn get-valid-game-mode []
-  (loop [mode (io/get-initial-input)]
-    (if (is-input-invalid? valid-game-modes mode)
-      (recur (io/get-game-mode mode))
-      mode)))
+  (get-valid-game-input valid-game-modes io/get-game-mode))
 
 (defn get-valid-move-order []
-  (io/get-initial-input))
+  (get-valid-game-input valid-move-orders io/get-move-order))
 
