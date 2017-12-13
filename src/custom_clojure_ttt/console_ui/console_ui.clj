@@ -3,6 +3,14 @@
             [custom-clojure-ttt.console_ui.input_output :as io]
             [clojure-tic-tac-toe.game_handler :as game_handler]))
 
+; TODO: make private
+(defn get-starting-player
+  [game-mode move-order]
+  (if (and (= game-mode :computer)
+           (= move-order :2))
+    :O
+    :X))
+
 (defn- int-to-keyword
   [number]
   (keyword (str number)))
@@ -46,9 +54,11 @@
 (defn play-game [& args]
   (let [_ (io/display-introduction)
         game-mode (ui_game_setup/get-game-mode)
+        ; move-order (ui_game_setup/get-move-order game-mode)
+        ; starting-player (get-starting-player game-mode move-order)
         side-length (get-side-length (flatten args))
         initial-data (create-initial-data side-length game-mode)
-        starting-game-state (create-starting-game-state)
+        starting-game-state (create-starting-game-state) ; starting-player
         create-view (game_handler/get-create-view initial-data)
         _ (ui_game_setup/display-instructions create-view)
         final-game-state (play-all-rounds starting-game-state initial-data)

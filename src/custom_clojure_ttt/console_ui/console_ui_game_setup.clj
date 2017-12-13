@@ -27,21 +27,9 @@
   [side-length]
   (valid_move_handler/get-valid-moves side-length))
 
-
 (defn get-winning-moves
   [side-length]
   (winning_move_handler/get-winning-moves side-length))
-
-
-(defn get-create-view []
-  view_handler/create-view)
-
-
-(defn display-instructions
-  [create-view]
-  (io/display-game-instructions)
-  (io/display-board game_handler/empty-board create-view))
-
 
 (defn decide-strategies
   [game-mode]
@@ -50,4 +38,12 @@
        {:X ui_human_move/get-human-move, :O ui_human_move/get-human-move}
     (= game-mode :computer)
        {:X ui_human_move/get-human-move, :O ui_comp_move/have-computer-move}))
+
+(defn get-create-view []
+  view_handler/create-view)
+
+(defn display-instructions
+  [create-view]
+  (io/display-game-instructions)
+  (io/display-board game_handler/empty-board create-view))
 
