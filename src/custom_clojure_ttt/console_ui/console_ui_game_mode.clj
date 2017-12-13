@@ -3,13 +3,13 @@
 
 (def valid-game-modes #{:h :c})
 
-(defn- is-game-mode-invalid?
-  [game-mode]
-  (not (contains? valid-game-modes game-mode)))
+(defn- is-input-invalid?
+  [valid-input-values input]
+  (not (contains? valid-input-values input)))
 
 (defn get-valid-game-mode []
   (loop [mode (io/get-initial-input)]
-    (if (is-game-mode-invalid? mode)
+    (if (is-input-invalid? valid-game-modes mode)
       (recur (io/get-game-mode mode))
       mode)))
 
