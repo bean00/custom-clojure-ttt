@@ -33,14 +33,14 @@
   (let [get-move (game_handler/get-move-strategy game-state initial-data)
         move (get-move game-state initial-data)
         next-game-state (game_handler/add-move game-state initial-data move)
-        create-view (game_handler/get-create-view initial-data)]
+        create-view (:create-view initial-data)]
     (io/display-board next-game-state create-view)
     next-game-state))
 
 (defn- play-all-rounds
   [starting-game-state initial-data]
   (loop [updated-game-state (play-round starting-game-state initial-data)]
-    (if (game_handler/finished? updated-game-state)
+    (if (:finished? updated-game-state)
       updated-game-state
       (recur (play-round updated-game-state initial-data)))))
 
@@ -48,7 +48,7 @@
   (let [side-length (get-side-length (flatten args))
         initial-data (create-initial-data side-length)
         starting-game-state (create-starting-game-state)
-        create-view (game_handler/get-create-view initial-data)
+        create-view (:create-view initial-data)
         _ (ui_game_setup/display-instructions create-view)
         final-game-state (play-all-rounds starting-game-state initial-data)
         winner (game_handler/get-winner final-game-state initial-data)]

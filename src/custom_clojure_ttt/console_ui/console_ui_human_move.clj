@@ -4,7 +4,7 @@
 
 (defn get-human-move
   [game-state initial-data]
-  (let [player (game_handler/get-player game-state)]
+  (let [player (:player game-state)]
     (loop [move (io/get-move player)]
       (cond
         (game_handler/is-move-invalid? initial-data move)
