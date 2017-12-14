@@ -12,7 +12,7 @@
   {:board board/empty-board, :player :X})
 
 (def initial-data
-  {:moves valid-moves})
+  {:valid-moves valid-moves})
 
 (deftest get-human-move-test
   (testing "when initially getting the move from the player"

@@ -8,7 +8,7 @@
   (valid_move_handler/get-valid-moves :3))
 
 (def initial-data
-  {:moves valid-moves})
+  {:valid-moves valid-moves})
 
 (deftest have-computer-move-test
   (testing "when having the computer move"
