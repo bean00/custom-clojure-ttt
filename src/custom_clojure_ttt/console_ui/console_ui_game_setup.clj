@@ -1,9 +1,9 @@
 (ns custom-clojure-ttt.console_ui.console_ui_game_setup
-  (:require [custom-clojure-ttt.console_ui.console_ui_computer_move :as ui_comp_move]
-            [custom-clojure-ttt.console_ui.console_ui_game_mode :as ui_game_input]
+  (:require [clojure-tic-tac-toe.game_handler :as game_handler]
+            [custom-clojure-ttt.console_ui.console_ui_computer_move :as ui_comp_move]
+            [custom-clojure-ttt.console_ui.console_ui_game_input :as ui_game_input]
             [custom-clojure-ttt.console_ui.console_ui_human_move :as ui_human_move]
             [custom-clojure-ttt.console_ui.input_output :as io]
-            [clojure-tic-tac-toe.game_handler :as game_handler]
             [custom-clojure-ttt.valid_move_handler :as valid_move_handler]
             [custom-clojure-ttt.view_handler :as view_handler]
             [custom-clojure-ttt.winning_move_handler :as winning_move_handler]))

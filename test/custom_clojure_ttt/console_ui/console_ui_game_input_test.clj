@@ -1,7 +1,7 @@
-(ns custom-clojure-ttt.console_ui.console_ui_game_mode_test
+(ns custom-clojure-ttt.console_ui.console_ui_game_input_test
   (:require [clojure.string :as str]
             [clojure.test :refer [deftest testing is]]
-            [custom-clojure-ttt.console_ui.console_ui_game_mode :refer :all]))
+            [custom-clojure-ttt.console_ui.console_ui_game_input :refer :all]))
 
 (deftest get-valid-game-mode-test
   (testing "when initially getting the game mode"

@@ -1,4 +1,4 @@
-(ns custom-clojure-ttt.console_ui.console_ui_game_mode
+(ns custom-clojure-ttt.console_ui.console_ui_game_input
   (:require [custom-clojure-ttt.console_ui.input_output :as io]))
 
 (def valid-game-modes #{:h :c})
