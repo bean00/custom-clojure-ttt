@@ -1,12 +1,12 @@
 (ns custom-clojure-ttt.console_ui.console_ui_game_setup_test
   (:require [clojure.string :as str]
             [clojure.test :refer [deftest testing is]]
-            [clojure-tic-tac-toe.default_valid_moves :as default_valid_moves]
-            [clojure-tic-tac-toe.default_winning_moves :as default_winning_moves]
             [custom-clojure-ttt.console_ui.console_ui_computer_move :as ui_comp_move]
             [custom-clojure-ttt.console_ui.console_ui_human_move :as ui_human_move]
             [custom-clojure-ttt.console_ui.console_ui_game_setup :refer :all]
-            [custom-clojure-ttt.view_handler :as view_handler]))
+            [custom-clojure-ttt.valid_move_handler :as valid_move_handler]
+            [custom-clojure-ttt.view_handler :as view_handler]
+            [custom-clojure-ttt.winning_move_handler :as winning_move_handler]))
 
 (defn- perform-setup-output []
   (with-out-str
@@ -38,13 +38,13 @@
 
 (deftest get-valid-moves-test
   (testing "when a side length is passed in"
-    (is (= default_valid_moves/valid-moves
+    (is (= valid_move_handler/valid-moves
            (get-valid-moves :3))
         "it returns the valid moves")))
 
 (deftest get-winning-moves-test
   (testing "when the function is called"
-    (is (= default_winning_moves/winning-moves
+    (is (= winning_move_handler/winning-moves
            (get-winning-moves :3))
         "it returns the winning moves")))
 
