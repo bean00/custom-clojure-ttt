@@ -6,7 +6,7 @@
 (defn- play-game-output []
   (with-out-str
     (with-in-str "h\n1\n2\n5\n9\n6\n4\n3\n7\n8\n"
-      (play-game))))
+      (play-game 3))))
 
 (deftest play-game-test
   (testing "when a game is played that ends in a tie (H vs. H)"
@@ -30,7 +30,7 @@
            (str/includes?
              (with-out-str
                (with-in-str "h\n1\n4\n2\n5\n3\n"
-                 (play-game)))
+                 (play-game 3)))
              "won"))
         "it displays that the player won"))
   (testing "when passing in the side length"
@@ -46,7 +46,7 @@
            (str/includes?
              (with-out-str
                (with-in-str "c\n1\n1\n2\n4\n"
-                 (play-game)))
+                 (play-game 3)))
              "choose the move order"))
         "it allows the user to go 1st or 2nd")))
 
