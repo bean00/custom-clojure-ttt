@@ -46,13 +46,13 @@
 
 (deftest get-valid-moves-test
   (testing "when a side length is passed in"
-    (is (= valid_move_handler/valid-moves-on-3x3
+    (is (= valid_move_handler/valid-moves-3x3
            (get-valid-moves :3))
         "it returns the valid moves")))
 
 (deftest get-winning-moves-test
   (testing "when the function is called"
-    (is (= winning_move_handler/winning-moves
+    (is (= winning_move_handler/winning-moves-3x3
            (get-winning-moves :3))
         "it returns the winning moves")))
 

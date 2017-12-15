@@ -15,7 +15,7 @@
                         (get-valid-moves :4)))
         "it returns the valid moves for a 4x4 board"))
   (testing "when choosing the default size"
-    (is (= valid-moves-on-3x3
+    (is (= valid-moves-3x3
            (get-valid-moves :default-size))
         "it returns the valid moves for a 3x3 board")))
 
