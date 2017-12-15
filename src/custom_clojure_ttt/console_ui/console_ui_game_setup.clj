@@ -49,8 +49,9 @@
        {:X ui_human_move/get-human-move, :O ui_comp_move/have-computer-move}))
 
 
-(defn get-create-view []
-  view_handler/create-view)
+(defn get-create-view
+  [side-length]
+  (view_handler/get-create-view side-length))
 
 
 (defn display-instructions

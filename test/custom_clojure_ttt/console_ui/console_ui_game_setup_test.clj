@@ -68,8 +68,8 @@
 
 (deftest get-create-view-test
   (testing "when getting the create view function"
-    (is (= view_handler/create-view
-           (get-create-view))
+    (is (= view_handler/create-view-3x3
+           (get-create-view :3))
         "it returns the function")))
 
 (deftest display-instructions-test
@@ -77,13 +77,13 @@
     (is (= true
            (str/includes?
              (with-out-str
-               (display-instructions view_handler/create-view))
+               (display-instructions view_handler/create-view-3x3))
              "type a number"))
         "it displays the instructions")
     (is (= true
            (str/includes?
              (with-out-str
-               (display-instructions view_handler/create-view))
+               (display-instructions view_handler/create-view-3x3))
              " 4 | 5 | 6 "))
         "it displays the example board")))
 

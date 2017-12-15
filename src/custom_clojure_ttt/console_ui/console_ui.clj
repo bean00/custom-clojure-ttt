@@ -38,7 +38,7 @@
   (let [valid-moves (ui_game_setup/get-valid-moves side-length)
         winning-moves (ui_game_setup/get-winning-moves side-length)
         move-strategies (ui_game_setup/decide-strategies game-mode)
-        create-view (ui_game_setup/get-create-view)
+        create-view (ui_game_setup/get-create-view side-length)
         initial-data (game_handler/create-initial-data
                        valid-moves winning-moves move-strategies create-view)]
     initial-data))

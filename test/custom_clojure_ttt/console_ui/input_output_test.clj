@@ -163,7 +163,7 @@
       (is (= view
              (with-out-str
                (display-board {:board {:X #{:1 :3}, :O #{:5}}}
-                              view_handler/create-view)))
+                              view_handler/create-view-3x3)))
           "it displays the board correctly"))))
 
 (deftest display-game-over-message-test
