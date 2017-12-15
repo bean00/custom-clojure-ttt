@@ -1,7 +1,9 @@
 (ns custom-clojure-ttt.core
+  (:require [custom-clojure-ttt.console_ui.console_ui :as console_ui])
   (:gen-class))
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "Custom Tic Tac Toe program."
   [& args]
-  (println "Hello, World!"))
+  (console_ui/play-game args))
+
